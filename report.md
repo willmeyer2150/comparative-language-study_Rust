@@ -4,6 +4,9 @@
 
 ## Introduction and Learning Goals
 
+**working note** 
+Rust is an _ahead-of-time compiled_ language, meaning you can compile a program and give the executable to someone else, and they can run it even without having Rust installed.
+
 ## Methods of Study
 ### Development Environment
 ### Experiment Design
