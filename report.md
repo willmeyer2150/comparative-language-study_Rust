@@ -16,6 +16,8 @@ Rust is an _ahead-of-time compiled_ language, meaning you can compile a program 
 ## Rust Language Analysis
 ### Rust Environment, Implementation, and Tools
 ### Types and Values
+- Rust is statically typed, which means that it must know the types of all variables at compile time.
+- The compiler can usually infer what type we want to use based on the value and how we use it.
 ### Variables, Scope, Ownership, and Lifetimes
 ### Control Flow
 ### Functions
