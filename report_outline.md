@@ -47,12 +47,6 @@ Even in the most basic lines of code, while Rust achieves the same basic functio
 
 ## Rust's programming features
 
-Address this section by thinking of each topic as having three layers:
-
-1. What does Rust do?
-2. Why is Rust designed this way?
-3. How does this differ from C++ or Python and what consequence follows.
-
 ### Types and Values
 
 **Concept**
@@ -227,33 +221,117 @@ Program output:
 
 **Small Example**
 
-This example demonstrates how a user can write code to mix types and specify to the compiler how to handle them.
+- This example combines an inferred f64 value with an explicitly declared f32 value.
+- Rust does not implicitly convert between numeric types.
+- f32 value must be explicitly cast to f64.
 
 ```rust
 fn main() {
     let x = 2.0; // f64 (default)
     let y: f32 = 3.0; // f32 (user specified)
-    println!("{}", x + y as f64);
+    println!("{:.1}", x + y as f64);
 }
 ```
 
 Program output:
 
 ```text
-5
+5.0
 ```
 
 - Floating-point numbers are represented according to IEEE-754 standard.
 
 **Comparison**
 
+- Rust provides 2 floating-point types, f32 and f64. The default f64.
+- C++ has three fundamental floating point data types: a single-precision float, a double-precision and an extended precision long double.
+- C++ also represents floating-point formats defined as IEEE-754 standard.
+- C++ does not define the actual size of these types, however there are typical size associated with the three types.
+- C++ allows more implicity numeric conversions, while Rust generally requiress the programmer to make conversions explicity.
+- Rust's approach makes possible precision changes more visible, but it can require additional syntax.
 
+
+| Category | C++ Type |	Typical Size |
+|---|---|---|
+| floating point | float | 4 bytes |
+|---| double | 8 bytes |
+|---| long double |	8, 12, or 16 bytes |
 
 **Consequence**
 
-#### Booleans Types
+- Rust's separate f32 and f64 types make precision and storage choices more explicit.
+- Rust's system can prevent accidental conversions, unlike C++.
+- Puts more pressure on the programmer to resolve type differences manually.
+- f64 provides greater precision than f32 at the cost of twice the storage size, although performance depends on the hardware and the workload.
+
+#### Booleans
+
+**Concept**
+
+- Like other programming languages, booleans in Rust have two values: `true` and `false`.
+- Booleans are one byte in size.
+- Specify boolean using: `bool`
+- Booleans are most commonly used for conditional checks such as `if` statements which strictly require bool expressions.
+- Like other types, booleans can be explicitly declared, or implicitly inferred.
+
+**Small Example**
+
+- Rust can infer that `f` and `t` have type `bool`.
+- The type annotation on `t` is explicit, while the type of `f` is inferred.
+
+
+```rust
+fn main() {
+    let f = false;
+    let t: bool = true;
+    println!("t = {}, f = {}", t, f);
+}
+```
+
+Program output:
+
+```text
+t = true, f = false
+```
+
+**Comparison**
+
+- Both Rust and C++ support `true` and `false` Boolean values.
+- Rust requires an `if` condition to have type `bool`.
+- C++ alows contextual conversion to `bool`, including conversion through `operator bool`, and also permits conditions such as if (1).
+
+Example
+
+```cpp
+if (1) {
+    // valid work
+}
+```
+
+vs.
+
+```rust
+if 1 {
+    // compile time error
+}
+```
+
+**Consequence**
+
+- Rust has stricter Boolean conditions preventing accidental use of integers, pointers or custom objects asconditions.
+- Rust improves clarity and can prevent unintended behavior, although it requires more explicit code than C++.
 
 #### Characters Types
+
+**Concept**
+
+**Small Example**
+
+**Comparison**
+
+**Consequence**
+
+---
 
 ### Variables
 
